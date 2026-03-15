@@ -1,72 +1,72 @@
 # TinyMCE Accessibility Enhancer
 
-Plugin de WordPress que mejora la accesibilidad del editor clásico TinyMCE, ayudando a los autores a crear contenido conforme a las pautas WCAG 2.1.
+WordPress plugin that enhances the accessibility of the classic TinyMCE editor, helping authors create content that complies with WCAG 2.1 guidelines.
 
-## Funcionalidades
+## Features
 
-### Validación de estructura de encabezados
-Detecta cuando los niveles de encabezado se saltan (por ejemplo, de H2 a H4) y alerta al autor para mantener una jerarquía correcta.
+### Heading Structure Validation
+Detects when heading levels are skipped (e.g., from H2 to H4) and alerts the author to maintain proper hierarchy.
 
-### Texto alternativo obligatorio en imágenes
-Resalta las imágenes insertadas sin texto alternativo y muestra una advertencia para que el autor añada una descripción.
+### Required Alt Text for Images
+Highlights images inserted without alt text and displays a warning prompting the author to add a description.
 
-### Verificación de contraste de color
-Analiza el texto con colores personalizados y verifica que cumple con el ratio mínimo de contraste (configurable: WCAG AA = 4.5:1, AAA = 7.0:1).
+### Color Contrast Checker
+Analyzes text with custom colors and verifies it meets the minimum contrast ratio (configurable: WCAG AA = 4.5:1, AAA = 7.0:1).
 
-### Detección de enlaces problemáticos
-- Identifica enlaces vacíos (sin texto ni aria-label)
-- Advierte sobre textos de enlace genéricos ("clic aquí", "leer más", etc.)
+### Problematic Link Detection
+- Identifies empty links (no text or aria-label)
+- Warns about generic link text ("click here", "read more", etc.)
 
-### Mejoras ARIA en la barra de herramientas
-- Añade `role="toolbar"` y `aria-label` a las barras de herramientas
-- Mejora la navegación por teclado con teclas de flecha
-- Añade etiquetas accesibles al iframe del editor
+### ARIA Toolbar Enhancements
+- Adds `role="toolbar"` and `aria-label` to toolbars
+- Improves keyboard navigation with arrow keys
+- Adds accessible labels to the editor iframe
 
-### Panel de auditoría integrado
-Panel desplegable debajo del editor que muestra los resultados de la auditoría en tiempo real con conteo de errores y advertencias.
+### Built-in Audit Panel
+Collapsible panel below the editor that displays real-time audit results with error and warning counts.
 
-## Instalación
+## Installation
 
-1. Descarga o clona este repositorio en `/wp-content/plugins/tinymce-accessibility/`
-2. Activa el plugin desde **Plugins** en el panel de WordPress
-3. Configura las opciones en **Ajustes > Accesibilidad TinyMCE**
+1. Download or clone this repository into `/wp-content/plugins/tinymce-accessibility/`
+2. Activate the plugin from **Plugins** in the WordPress admin panel
+3. Configure options under **Settings > TinyMCE Accessibility**
 
-## Configuración
+## Configuration
 
-Todas las funcionalidades se pueden activar/desactivar individualmente desde la página de ajustes:
+All features can be individually enabled/disabled from the settings page:
 
-| Opción | Descripción | Por defecto |
-|--------|-------------|-------------|
-| Texto alternativo obligatorio | Exigir alt en imágenes | Activado |
-| Orden de encabezados | Verificar jerarquía H1-H6 | Activado |
-| Contraste de color | Verificar ratio de contraste | Activado |
-| Mejoras ARIA | Roles y etiquetas en toolbar | Activado |
-| Panel de auditoría | Mostrar panel de resultados | Activado |
-| Prevenir enlaces vacíos | Detectar enlaces sin texto | Activado |
-| Textos de enlace genéricos | Advertir sobre "clic aquí" | Activado |
-| Ratio mínimo de contraste | Valor mínimo (3.0-7.0) | 4.5 |
+| Option | Description | Default |
+|--------|-------------|---------|
+| Required alt text | Enforce alt text on images | Enabled |
+| Heading order | Verify H1-H6 hierarchy | Enabled |
+| Color contrast | Check contrast ratio | Enabled |
+| ARIA enhancements | Roles and labels on toolbar | Enabled |
+| Audit panel | Show results panel | Enabled |
+| Prevent empty links | Detect links without text | Enabled |
+| Generic link text | Warn about "click here" | Enabled |
+| Minimum contrast ratio | Minimum value (3.0-7.0) | 4.5 |
 
-## Compatibilidad
+## Compatibility
 
-| Componente | Versión soportada | Notas |
+| Component | Supported Version | Notes |
 |-----------|-------------------|-------|
-| WordPress | 5.0 – 6.9 | Probado con 6.9, compatible con 7.0 beta |
-| TinyMCE   | 4.9.x (bundled)   | La versión incluida en WordPress core |
+| WordPress | 5.0 – 6.9 | Tested with 6.9, compatible with 7.0 beta |
+| TinyMCE   | 4.9.x (bundled)   | The version included in WordPress core |
 | PHP       | 7.2+              | |
-| Classic Editor plugin | 1.0+ | Recomendado en WP 5.0+ |
+| Classic Editor plugin | 1.0+ | Recommended for WP 5.0+ |
 
-### Notas de compatibilidad
+### Compatibility Notes
 
-- **WordPress usa TinyMCE 4.9.x** — este plugin utiliza la API de TinyMCE 4.x (`editor.addButton`, `editor.settings`, clases CSS `.mce-*`), que es la que WordPress incluye.
-- **Gutenberg / Block Editor** — el plugin funciona en bloques "Classic Paragraph" (del plugin Advanced Editor Tools) y con el plugin Classic Editor. No afecta al editor de bloques nativo.
-- **TinyMCE 5/6/7/8** — si WordPress algún día actualiza a TinyMCE 5+, las APIs cambiarían (`editor.ui.registry.addButton` en vez de `editor.addButton`, `onAction` en vez de `onclick`). Se actualizará en ese momento.
+- **WordPress ships TinyMCE 4.9.x** — this plugin uses the TinyMCE 4.x API (`editor.addButton`, `editor.settings`, `.mce-*` CSS classes), which is what WordPress includes.
+- **Gutenberg / Block Editor** — the plugin works within "Classic Paragraph" blocks (from the Advanced Editor Tools plugin) and with the Classic Editor plugin. It does not affect the native block editor.
+- **TinyMCE 5/6/7/8** — if WordPress ever upgrades to TinyMCE 5+, the APIs would change (`editor.ui.registry.addButton` instead of `editor.addButton`, `onAction` instead of `onclick`). The plugin will be updated accordingly at that time.
 
-## Requisitos
+## Requirements
 
-- WordPress 5.0+ (recomendado 6.8+)
+- WordPress 5.0+ (6.8+ recommended)
 - PHP 7.2+
-- Editor clásico de TinyMCE (Classic Editor plugin o bloques Classic Paragraph)
+- Classic TinyMCE editor (Classic Editor plugin or Classic Paragraph blocks)
 
-## Licencia
+## License
 
 GPL-2.0+
