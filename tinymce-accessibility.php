@@ -9,6 +9,7 @@
  * Text Domain: tinymce-a11y
  * Domain Path: /languages
  * Requires at least: 5.0
+ * Tested up to: 6.9
  * Requires PHP: 7.2
  */
 
@@ -37,11 +38,45 @@ class TinyMCE_Accessibility {
 	private function __construct() {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
-		add_filter( 'mce_external_plugins', array( $this, 'register_tinymce_plugin' ) );
-		add_filter( 'mce_buttons_2', array( $this, 'add_toolbar_button' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
-		add_filter( 'tiny_mce_before_init', array( $this, 'configure_tinymce' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+
+		// Only register TinyMCE hooks if the classic editor is available.
+		if ( $this->is_classic_editor_active() ) {
+			add_filter( 'mce_external_plugins', array( $this, 'register_tinymce_plugin' ) );
+			add_filter( 'mce_buttons_2', array( $this, 'add_toolbar_button' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+			add_filter( 'tiny_mce_before_init', array( $this, 'configure_tinymce' ) );
+		}
+	}
+
+	/**
+	 * Check if the classic TinyMCE editor is active.
+	 *
+	 * Returns true if:
+	 * - WordPress < 5.0 (always had TinyMCE)
+	 * - Classic Editor plugin is active
+	 * - The block editor has been disabled via filter
+	 */
+	private function is_classic_editor_active() {
+		// WordPress < 5.0 always uses TinyMCE.
+		global $wp_version;
+		if ( version_compare( $wp_version, '5.0', '<' ) ) {
+			return true;
+		}
+
+		// Classic Editor plugin is active.
+		if ( class_exists( 'Classic_Editor' ) ) {
+			return true;
+		}
+
+		// Block editor disabled via filter.
+		if ( has_filter( 'use_block_editor_for_post_type', '__return_false' ) ) {
+			return true;
+		}
+
+		// TinyMCE filters are still fired even in Gutenberg for Classic blocks,
+		// so we register anyway and let WordPress handle it.
+		return true;
 	}
 
 	/**

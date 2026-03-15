@@ -46,11 +46,26 @@ Todas las funcionalidades se pueden activar/desactivar individualmente desde la 
 | Textos de enlace genéricos | Advertir sobre "clic aquí" | Activado |
 | Ratio mínimo de contraste | Valor mínimo (3.0-7.0) | 4.5 |
 
+## Compatibilidad
+
+| Componente | Versión soportada | Notas |
+|-----------|-------------------|-------|
+| WordPress | 5.0 – 6.9 | Probado con 6.9, compatible con 7.0 beta |
+| TinyMCE   | 4.9.x (bundled)   | La versión incluida en WordPress core |
+| PHP       | 7.2+              | |
+| Classic Editor plugin | 1.0+ | Recomendado en WP 5.0+ |
+
+### Notas de compatibilidad
+
+- **WordPress usa TinyMCE 4.9.x** — este plugin utiliza la API de TinyMCE 4.x (`editor.addButton`, `editor.settings`, clases CSS `.mce-*`), que es la que WordPress incluye.
+- **Gutenberg / Block Editor** — el plugin funciona en bloques "Classic Paragraph" (del plugin Advanced Editor Tools) y con el plugin Classic Editor. No afecta al editor de bloques nativo.
+- **TinyMCE 5/6/7/8** — si WordPress algún día actualiza a TinyMCE 5+, las APIs cambiarían (`editor.ui.registry.addButton` en vez de `editor.addButton`, `onAction` en vez de `onclick`). Se actualizará en ese momento.
+
 ## Requisitos
 
-- WordPress 5.0+
+- WordPress 5.0+ (recomendado 6.8+)
 - PHP 7.2+
-- Editor clásico de TinyMCE (no Gutenberg)
+- Editor clásico de TinyMCE (Classic Editor plugin o bloques Classic Paragraph)
 
 ## Licencia
 
