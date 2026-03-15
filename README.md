@@ -1,4 +1,4 @@
-# TinyMCE Accessibility Enhancer
+# TinyMCE Accessibility
 
 WordPress plugin that enhances the accessibility of the classic TinyMCE editor, helping authors create content that complies with WCAG 2.1 guidelines.
 
