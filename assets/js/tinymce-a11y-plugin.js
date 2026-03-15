@@ -94,7 +94,7 @@
 						type: 'error',
 						category: 'heading_order',
 						element: headings[i],
-						message: 'Se saltó del nivel H' + lastLevel + ' al H' + level + '. Use niveles consecutivos.'
+						message: 'Skipped from H' + lastLevel + ' to H' + level + '. Use consecutive heading levels.'
 					});
 				}
 				lastLevel = level;
@@ -117,14 +117,14 @@
 						type: 'error',
 						category: 'missing_alt',
 						element: images[i],
-						message: 'Imagen sin texto alternativo.'
+						message: 'Image is missing alt text.'
 					});
 				} else if (alt.trim() === '') {
 					issues.push({
 						type: 'warning',
 						category: 'empty_alt',
 						element: images[i],
-						message: 'Imagen con texto alternativo vacío. Si es decorativa, considere eliminarla del contenido.'
+						message: 'Image has empty alt text. If decorative, consider removing it from content.'
 					});
 				}
 			}
@@ -163,7 +163,7 @@
 						type: 'error',
 						category: 'low_contrast',
 						element: el,
-						message: 'El ratio de contraste (' + ratio.toFixed(2) + ':1) es menor que el mínimo requerido (' + minRatio + ':1).'
+						message: 'Contrast ratio (' + ratio.toFixed(2) + ':1) is below the required minimum (' + minRatio + ':1).'
 					});
 				}
 			}
@@ -175,10 +175,9 @@
 			var issues = [];
 			var links = body.querySelectorAll('a');
 			var genericTexts = [
-				'clic aquí', 'click aquí', 'haz clic', 'haga clic',
-				'click here', 'here', 'read more', 'leer más',
-				'más', 'more', 'enlace', 'link', 'ver más', 'saber más',
-				'aquí', 'pulsa aquí', 'pincha aquí'
+				'click here', 'here', 'read more', 'more',
+				'link', 'this', 'learn more', 'go', 'details',
+				'info', 'this link', 'this page'
 			];
 
 			for (var i = 0; i < links.length; i++) {
@@ -191,7 +190,7 @@
 						type: 'error',
 						category: 'empty_link',
 						element: link,
-						message: 'Este enlace no tiene texto descriptivo.'
+						message: 'This link has no descriptive text.'
 					});
 				} else if (settings.check_link_text && text) {
 					var lowerText = text.toLowerCase();
@@ -201,7 +200,7 @@
 								type: 'warning',
 								category: 'generic_link',
 								element: link,
-								message: 'Evite textos de enlace genéricos como "' + text + '". Use texto descriptivo.'
+								message: 'Avoid generic link text like "' + text + '". Use descriptive text instead.'
 							});
 							break;
 						}
@@ -287,7 +286,7 @@
 						needsAlt[i].style.outlineOffset = '2px';
 					}
 					editor.notificationManager.open({
-						text: 'Se insertaron imágenes sin texto alternativo. Por favor, añada una descripción.',
+						text: 'Images were inserted without alt text. Please add a description.',
 						type: 'warning',
 						timeout: 5000
 					});
@@ -307,8 +306,8 @@
 				// Add aria-label to the editor iframe
 				var iframe = container.querySelector('iframe');
 				if (iframe) {
-					iframe.setAttribute('aria-label', 'Área de edición de contenido');
-					iframe.setAttribute('title', 'Editor de contenido accesible');
+					iframe.setAttribute('aria-label', 'Content editing area');
+					iframe.setAttribute('title', 'Accessible content editor');
 				}
 
 				// Enhance toolbar buttons
@@ -328,7 +327,7 @@
 				for (var j = 0; j < toolbars.length; j++) {
 					toolbars[j].setAttribute('role', 'toolbar');
 					if (!toolbars[j].getAttribute('aria-label')) {
-						toolbars[j].setAttribute('aria-label', 'Barra de herramientas del editor ' + (j + 1));
+						toolbars[j].setAttribute('aria-label', 'Editor toolbar ' + (j + 1));
 					}
 				}
 
@@ -364,7 +363,7 @@
 		// ──────────────────────────────────────────
 
 		editor.addButton('a11y_audit', {
-			title: 'Auditoría de Accesibilidad',
+			title: 'Accessibility Audit',
 			icon: 'accessibility-check',
 			onclick: function () {
 				var issues = runAllChecks();
@@ -392,7 +391,7 @@
 				// Show summary notification
 				if (issues.length === 0) {
 					editor.notificationManager.open({
-						text: 'No se encontraron problemas de accesibilidad.',
+						text: 'No accessibility issues found.',
 						type: 'success',
 						timeout: 3000
 					});
@@ -400,7 +399,7 @@
 					var errors = issues.filter(function (i) { return i.type === 'error'; }).length;
 					var warnings = issues.filter(function (i) { return i.type === 'warning'; }).length;
 					editor.notificationManager.open({
-						text: 'Accesibilidad: ' + errors + ' errores, ' + warnings + ' advertencias.',
+						text: 'Accessibility: ' + errors + ' error(s), ' + warnings + ' warning(s).',
 						type: errors > 0 ? 'error' : 'warning',
 						timeout: 5000
 					});

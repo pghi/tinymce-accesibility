@@ -2,7 +2,7 @@
 /**
  * Plugin Name: TinyMCE Accessibility Enhancer
  * Plugin URI: https://github.com/pghi/TinyMCE---Accesibilidad-
- * Description: Mejora la accesibilidad del editor TinyMCE en WordPress. Incluye validación de encabezados, texto alternativo obligatorio, verificación de contraste, mejoras ARIA y panel de auditoría.
+ * Description: Enhances the accessibility of the TinyMCE editor in WordPress. Includes heading validation, required alt text, contrast checking, ARIA enhancements, and an audit panel.
  * Version: 1.0.0
  * Author: pghi
  * License: GPL-2.0+
@@ -143,7 +143,7 @@ class TinyMCE_Accessibility {
 	public function add_settings_page() {
 		add_options_page(
 			__( 'TinyMCE Accessibility', 'tinymce-a11y' ),
-			__( 'Accesibilidad TinyMCE', 'tinymce-a11y' ),
+			__( 'TinyMCE Accessibility', 'tinymce-a11y' ),
 			'manage_options',
 			'tinymce-a11y',
 			array( $this, 'render_settings_page' )
@@ -165,72 +165,72 @@ class TinyMCE_Accessibility {
 				<?php settings_fields( 'tinymce_a11y_options' ); ?>
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Texto alternativo obligatorio', 'tinymce-a11y' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Required alt text', 'tinymce-a11y' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[enforce_alt_text]" value="1" <?php checked( $settings['enforce_alt_text'] ); ?> />
-								<?php esc_html_e( 'Exigir texto alternativo en todas las imágenes', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Require alt text on all images', 'tinymce-a11y' ); ?>
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Orden de encabezados', 'tinymce-a11y' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Heading order', 'tinymce-a11y' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[check_heading_order]" value="1" <?php checked( $settings['check_heading_order'] ); ?> />
-								<?php esc_html_e( 'Verificar que los encabezados sigan un orden jerárquico correcto', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Verify that headings follow a correct hierarchical order', 'tinymce-a11y' ); ?>
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Contraste de color', 'tinymce-a11y' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Color contrast', 'tinymce-a11y' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[check_contrast]" value="1" <?php checked( $settings['check_contrast'] ); ?> />
-								<?php esc_html_e( 'Verificar el contraste de color del texto', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Check text color contrast', 'tinymce-a11y' ); ?>
 							</label>
 							<br />
 							<label>
-								<?php esc_html_e( 'Ratio mínimo de contraste:', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Minimum contrast ratio:', 'tinymce-a11y' ); ?>
 								<input type="number" name="tinymce_a11y_settings[min_contrast_ratio]" value="<?php echo esc_attr( $settings['min_contrast_ratio'] ); ?>" min="3" max="7" step="0.1" style="width:70px" />
 								<span class="description"><?php esc_html_e( '(WCAG AA = 4.5, WCAG AAA = 7.0)', 'tinymce-a11y' ); ?></span>
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Mejoras ARIA', 'tinymce-a11y' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'ARIA enhancements', 'tinymce-a11y' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[enhance_aria]" value="1" <?php checked( $settings['enhance_aria'] ); ?> />
-								<?php esc_html_e( 'Añadir roles y etiquetas ARIA a la barra de herramientas', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Add ARIA roles and labels to the toolbar', 'tinymce-a11y' ); ?>
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Panel de auditoría', 'tinymce-a11y' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Audit panel', 'tinymce-a11y' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[show_audit_panel]" value="1" <?php checked( $settings['show_audit_panel'] ); ?> />
-								<?php esc_html_e( 'Mostrar panel de auditoría de accesibilidad en el editor', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Show accessibility audit panel in the editor', 'tinymce-a11y' ); ?>
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Enlaces', 'tinymce-a11y' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Links', 'tinymce-a11y' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[prevent_empty_links]" value="1" <?php checked( $settings['prevent_empty_links'] ); ?> />
-								<?php esc_html_e( 'Prevenir enlaces vacíos o sin texto descriptivo', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Prevent empty links or links without descriptive text', 'tinymce-a11y' ); ?>
 							</label>
 							<br />
 							<label>
 								<input type="checkbox" name="tinymce_a11y_settings[check_link_text]" value="1" <?php checked( $settings['check_link_text'] ); ?> />
-								<?php esc_html_e( 'Advertir sobre textos de enlace genéricos ("clic aquí", "leer más")', 'tinymce-a11y' ); ?>
+								<?php esc_html_e( 'Warn about generic link text ("click here", "read more")', 'tinymce-a11y' ); ?>
 							</label>
 						</td>
 					</tr>
 				</table>
-				<?php submit_button( __( 'Guardar cambios', 'tinymce-a11y' ) ); ?>
+				<?php submit_button( __( 'Save Changes', 'tinymce-a11y' ) ); ?>
 			</form>
 		</div>
 		<?php
@@ -296,24 +296,27 @@ class TinyMCE_Accessibility {
 		wp_localize_script( 'tinymce-a11y-audit-panel', 'tinymceA11y', array(
 			'settings' => $settings,
 			'i18n'     => array(
-				'panelTitle'        => __( 'Auditoría de Accesibilidad', 'tinymce-a11y' ),
-				'noIssues'          => __( 'No se encontraron problemas de accesibilidad.', 'tinymce-a11y' ),
-				'issuesFound'       => __( 'problemas encontrados', 'tinymce-a11y' ),
-				'runAudit'          => __( 'Ejecutar auditoría', 'tinymce-a11y' ),
-				'headingOrder'      => __( 'Orden de encabezados', 'tinymce-a11y' ),
-				'missingAlt'        => __( 'Texto alternativo faltante', 'tinymce-a11y' ),
-				'lowContrast'       => __( 'Contraste insuficiente', 'tinymce-a11y' ),
-				'emptyLink'         => __( 'Enlace vacío', 'tinymce-a11y' ),
-				'genericLinkText'   => __( 'Texto de enlace genérico', 'tinymce-a11y' ),
+				'panelTitle'        => __( 'Accessibility Audit', 'tinymce-a11y' ),
+				'noIssues'          => __( 'No accessibility issues found.', 'tinymce-a11y' ),
+				'issuesFound'       => __( 'issues found', 'tinymce-a11y' ),
+				'runAudit'          => __( 'Run audit', 'tinymce-a11y' ),
+				'headingOrder'      => __( 'Heading order', 'tinymce-a11y' ),
+				'missingAlt'        => __( 'Missing alt text', 'tinymce-a11y' ),
+				'lowContrast'       => __( 'Insufficient contrast', 'tinymce-a11y' ),
+				'emptyLink'         => __( 'Empty link', 'tinymce-a11y' ),
+				'genericLinkText'   => __( 'Generic link text', 'tinymce-a11y' ),
 				'error'             => __( 'Error', 'tinymce-a11y' ),
-				'warning'           => __( 'Advertencia', 'tinymce-a11y' ),
-				'passed'            => __( 'Correcto', 'tinymce-a11y' ),
-				'headingSkipped'    => __( 'Se saltó del nivel H%1$s al H%2$s. Use niveles consecutivos.', 'tinymce-a11y' ),
-				'imgNoAlt'          => __( 'Imagen sin texto alternativo.', 'tinymce-a11y' ),
-				'imgEmptyAlt'       => __( 'Imagen con texto alternativo vacío. Si es decorativa, considere eliminarla del contenido.', 'tinymce-a11y' ),
-				'contrastFail'      => __( 'El ratio de contraste (%1$s) es menor que el mínimo requerido (%2$s).', 'tinymce-a11y' ),
-				'linkEmpty'         => __( 'Este enlace no tiene texto descriptivo.', 'tinymce-a11y' ),
-				'linkGeneric'       => __( 'Evite textos de enlace genéricos como "%s". Use texto descriptivo.', 'tinymce-a11y' ),
+				'warning'           => __( 'Warning', 'tinymce-a11y' ),
+				'passed'            => __( 'Passed', 'tinymce-a11y' ),
+				/* translators: %1$s: previous heading level, %2$s: current heading level */
+				'headingSkipped'    => __( 'Skipped from H%1$s to H%2$s. Use consecutive heading levels.', 'tinymce-a11y' ),
+				'imgNoAlt'          => __( 'Image is missing alt text.', 'tinymce-a11y' ),
+				'imgEmptyAlt'       => __( 'Image has empty alt text. If decorative, consider removing it from content.', 'tinymce-a11y' ),
+				/* translators: %1$s: actual contrast ratio, %2$s: minimum required ratio */
+				'contrastFail'      => __( 'Contrast ratio (%1$s) is below the required minimum (%2$s).', 'tinymce-a11y' ),
+				'linkEmpty'         => __( 'This link has no descriptive text.', 'tinymce-a11y' ),
+				/* translators: %s: the generic link text found */
+				'linkGeneric'       => __( 'Avoid generic link text like "%s". Use descriptive text instead.', 'tinymce-a11y' ),
 			),
 		) );
 	}
