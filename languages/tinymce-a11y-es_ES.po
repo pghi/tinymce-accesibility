@@ -1,0 +1,161 @@
+# Spanish (Spain) translation for TinyMCE Accessibility Enhancer.
+# Copyright (C) 2026 pghi
+# This file is distributed under the same license as the TinyMCE Accessibility Enhancer package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TinyMCE Accessibility Enhancer 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/pghi/TinyMCE---Accesibilidad-/issues\n"
+"POT-Creation-Date: 2026-03-15 11:06+0000\n"
+"PO-Revision-Date: 2026-03-15 11:06+0000\n"
+"Last-Translator: pghi\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: manual\n"
+
+#: tinymce-accessibility.php:145 tinymce-accessibility.php:146
+msgid "TinyMCE Accessibility"
+msgstr "Accesibilidad TinyMCE"
+
+#: tinymce-accessibility.php:163
+msgid "TinyMCE Accessibility Enhancer"
+msgstr "Mejoras de Accesibilidad para TinyMCE"
+
+#: tinymce-accessibility.php:168
+msgid "Required alt text"
+msgstr "Texto alternativo obligatorio"
+
+#: tinymce-accessibility.php:172
+msgid "Require alt text on all images"
+msgstr "Exigir texto alternativo en todas las imágenes"
+
+#: tinymce-accessibility.php:177 tinymce-accessibility.php:303
+msgid "Heading order"
+msgstr "Orden de encabezados"
+
+#: tinymce-accessibility.php:181
+msgid "Verify that headings follow a correct hierarchical order"
+msgstr "Verificar que los encabezados sigan un orden jerárquico correcto"
+
+#: tinymce-accessibility.php:186
+msgid "Color contrast"
+msgstr "Contraste de color"
+
+#: tinymce-accessibility.php:190
+msgid "Check text color contrast"
+msgstr "Verificar el contraste de color del texto"
+
+#: tinymce-accessibility.php:194
+msgid "Minimum contrast ratio:"
+msgstr "Ratio mínimo de contraste:"
+
+#: tinymce-accessibility.php:196
+msgid "(WCAG AA = 4.5, WCAG AAA = 7.0)"
+msgstr "(WCAG AA = 4,5; WCAG AAA = 7,0)"
+
+#: tinymce-accessibility.php:201
+msgid "ARIA enhancements"
+msgstr "Mejoras ARIA"
+
+#: tinymce-accessibility.php:205
+msgid "Add ARIA roles and labels to the toolbar"
+msgstr "Añadir roles y etiquetas ARIA a la barra de herramientas"
+
+#: tinymce-accessibility.php:210
+msgid "Audit panel"
+msgstr "Panel de auditoría"
+
+#: tinymce-accessibility.php:214
+msgid "Show accessibility audit panel in the editor"
+msgstr "Mostrar panel de auditoría de accesibilidad en el editor"
+
+#: tinymce-accessibility.php:219
+msgid "Links"
+msgstr "Enlaces"
+
+#: tinymce-accessibility.php:223
+msgid "Prevent empty links or links without descriptive text"
+msgstr "Prevenir enlaces vacíos o sin texto descriptivo"
+
+#: tinymce-accessibility.php:228
+msgid "Warn about generic link text (\"click here\", \"read more\")"
+msgstr "Advertir sobre textos de enlace genéricos (\"haga clic aquí\", \"leer más\")"
+
+#: tinymce-accessibility.php:233
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: tinymce-accessibility.php:299
+msgid "Accessibility Audit"
+msgstr "Auditoría de accesibilidad"
+
+#: tinymce-accessibility.php:300
+msgid "No accessibility issues found."
+msgstr "No se han encontrado problemas de accesibilidad."
+
+#: tinymce-accessibility.php:301
+msgid "issues found"
+msgstr "problemas encontrados"
+
+#: tinymce-accessibility.php:302
+msgid "Run audit"
+msgstr "Ejecutar auditoría"
+
+#: tinymce-accessibility.php:304
+msgid "Missing alt text"
+msgstr "Texto alternativo faltante"
+
+#: tinymce-accessibility.php:305
+msgid "Insufficient contrast"
+msgstr "Contraste insuficiente"
+
+#: tinymce-accessibility.php:306
+msgid "Empty link"
+msgstr "Enlace vacío"
+
+#: tinymce-accessibility.php:307
+msgid "Generic link text"
+msgstr "Texto de enlace genérico"
+
+#: tinymce-accessibility.php:308
+msgid "Error"
+msgstr "Error"
+
+#: tinymce-accessibility.php:309
+msgid "Warning"
+msgstr "Advertencia"
+
+#: tinymce-accessibility.php:310
+msgid "Passed"
+msgstr "Correcto"
+
+#: tinymce-accessibility.php:312
+#, php-format
+msgid "Skipped from H%1$s to H%2$s. Use consecutive heading levels."
+msgstr "Se ha saltado del nivel H%1$s al H%2$s. Utilice niveles consecutivos."
+
+#: tinymce-accessibility.php:313
+msgid "Image is missing alt text."
+msgstr "La imagen no tiene texto alternativo."
+
+#: tinymce-accessibility.php:314
+msgid "Image has empty alt text. If decorative, consider removing it from content."
+msgstr "La imagen tiene texto alternativo vacío. Si es decorativa, considere eliminarla del contenido."
+
+#: tinymce-accessibility.php:316
+#, php-format
+msgid "Contrast ratio (%1$s) is below the required minimum (%2$s)."
+msgstr "El ratio de contraste (%1$s) es menor que el mínimo requerido (%2$s)."
+
+#: tinymce-accessibility.php:317
+msgid "This link has no descriptive text."
+msgstr "Este enlace no tiene texto descriptivo."
+
+#: tinymce-accessibility.php:319
+#, php-format
+msgid "Avoid generic link text like \"%s\". Use descriptive text instead."
+msgstr "Evite textos de enlace genéricos como \"%s\". Utilice texto descriptivo."
